@@ -1,15 +1,15 @@
-const textTotalAddBtn = document.querySelector(".radioBillAddBtn");
-const billTypeText = document.querySelector(".billItemTypeRadio");
-const callTotalElem = document.querySelector(".callTotalTwo");
-const smsTotalElem = document.querySelector(".smsTotalTwo");
-const totalCost = document.querySelector(".totalTwo");
-alert(textTotalAddBtn)
+const textTotalAddBtnELem = document.querySelector(".radioBillAddBtn");
+const billTypeTextElem = document.querySelector(".billItemTypeRadio");
+const callTotalElemTwo = document.querySelector(".callTotalTwo");
+const smsTotalElemTwo = document.querySelector(".smsTotalTwo");
+const totalCostElemTwo = document.querySelector(".totalTwo");
+
   var billTotal =0;
   var callsTotal =0;
   var smsTotal =0;
 
 function textTotalAddBtnClicked(){
-  alert("chuma")
+ // alert("chuma")
 var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
 if (checkedRadioBtn){
    var billItemType = checkedRadioBtn.value
@@ -34,16 +34,16 @@ if (checkedRadioBtn){
 // alert(billTotal)
 
 function totalAddBtnClicked(){
-      callTotalElem.innerHTML = callsTotal.toFixed(2);
-      smsTotalElem.innerHTML = smsTotal.toFixed(2);
-      totalCost.innerHTML = billTotal.toFixed(2); 
+  callTotalElemTwo.innerHTML = callsTotal.toFixed(2);
+  smsTotalElemTwo.innerHTML = smsTotal.toFixed(2);
+  totalCostElemTwo.innerHTML = billTotal.toFixed(2); 
   
       if (billTotal >= 50){
        // adding the danger class will make the text red
-       totalCost.classList.add("danger");
+       totalCostElemTwo.classList.add("danger");
    }
    else if (billTotal >= 30){
-       totalCost.classList.add("warning");
+    totalCostElemTwo.classList.add("warning");
    }
 }
-textTotalAddBtn.addEventListener("click", textTotalAddBtnClicked);
+textTotalAddBtnELem.addEventListener("click", textTotalAddBtnClicked);
