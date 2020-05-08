@@ -1,7 +1,7 @@
 
 const btnAdd=document.querySelector(".add");
 const btnUpd=document.querySelector(".updateSettings")
-const color=document.querySelector(".bread");
+
 const smsCost=document.querySelector(".smsCostSetting");
 const callCost=document.querySelector(".callCostSetting");
 const criticalLevel=document.querySelector(".criticalLevelSetting");
@@ -16,7 +16,9 @@ var critLevel=0;
 var smsCostTotal=0;
 var callCostTotal=0;
 var allCostTotal=0;
- function tCostOfBill(billItemType) {
+ function totalAdd(billItemType) {
+     if (allCostTotal<=critLevel){
+
             if (billItemType === "call") {
         callCostTotal+=callCostVal;
               allCostTotal+=callCostVal;
@@ -27,17 +29,21 @@ var allCostTotal=0;
               allCostTotal+=smsCostVal;
             }
         }
+        }
 function styleTotal(roundedBillTotal){ 
-      const currTotal=Number(roundedBillTotal);
+      const currentTotal=Number(roundedBillTotal);
     totalCostElemThree.classList.remove("danger");
     totalCostElemThree.classList.remove("warning");
- if(currTotal>=warnLevel && currTotal<critLevel)
+
+ if(currentTotal>=warnLevel && currentTotal<critLevel)
     {//make orange
+        totalCostElemThree.classList.remove("danger")
 totalCostElemThree.classList.add("warning");
     }
     
-else if(currTotal>=critLevel){
+else if(currentTotal>=critLevel){
         //make red
+        totalCostElemThree.classList.remove("warning")
         totalCostElemThree.classList.add("danger")
     } 
     
@@ -48,7 +54,7 @@ function clicked(){
 
   var item = radioSmsCall.value;  
 
-  tCostOfBill(item);    
+  totalAdd(item);    
 callCostElem.innerHTML =callCostTotal.toFixed(2);
     smsCostElem.innerHTML = smsCostTotal.toFixed(2)
     totalCostElemThree.innerHTML = allCostTotal.toFixed(2);
