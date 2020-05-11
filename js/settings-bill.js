@@ -17,7 +17,7 @@ var smsCostTotal=0;
 var callCostTotal=0;
 var allCostTotal=0;
  function totalAdd(billItemType) {
-     if (allCostTotal<=critLevel){
+     if (allCostTotal<critLevel){
 
             if (billItemType === "call") {
         callCostTotal+=callCostVal;

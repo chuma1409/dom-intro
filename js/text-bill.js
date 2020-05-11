@@ -23,7 +23,7 @@ const totalCost = document.querySelector(".totalOne");
 function textTotalAddBtnClicked(){
 
 
-alert('fdfdfdfd')
+
     // get the value entered in the billType textfield
 
     var billItems = billTypeTextElem.value
