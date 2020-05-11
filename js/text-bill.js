@@ -1,6 +1,6 @@
-const textTotalAddBtn = document.querySelector(".addToBillBtn");
+const textTotalAddBtnElem = document.querySelector(".addToBillBtn");
 
-const billTypeText = document.querySelector(".billTypeText");
+const billTypeTextElem = document.querySelector(".billTypeText");
 
 const callTotalElem = document.querySelector(".callTotalOne");
 
@@ -12,7 +12,7 @@ const totalCost = document.querySelector(".totalOne");
 
 
 
-    var billTotal =0;
+  var billTotal =0;
 
   var callsTotal =0;
 
@@ -23,10 +23,10 @@ const totalCost = document.querySelector(".totalOne");
 function textTotalAddBtnClicked(){
 
 
-
+alert('fdfdfdfd')
     // get the value entered in the billType textfield
 
-    var billItems = billTypeText.value
+    var billItems = billTypeTextElem.value
 
     // update the correct total
 
@@ -53,6 +53,13 @@ function textTotalAddBtnClicked(){
 
 
   totalAddBtnClicked()
+  callTotalElem.innerHTML = callsTotal.toFixed(2);
+
+  smsTotalElem.innerHTML = smsTotal.toFixed(2);
+
+  totalCost.innerHTML = billTotal.toFixed(2); 
+
+
 
 }
 
@@ -62,14 +69,7 @@ function textTotalAddBtnClicked(){
 
 function totalAddBtnClicked(){
 
-      callTotalElem.innerHTML = callsTotal.toFixed(2);
-
-      smsTotalElem.innerHTML = smsTotal.toFixed(2);
-
-      totalCost.innerHTML = billTotal.toFixed(2); 
-
-  
-
+   
       if (billTotal >= 50){
 
        // adding the danger class will make the text red
@@ -86,4 +86,4 @@ function totalAddBtnClicked(){
 
 }
 
-textTotalAddBtn.addEventListener("click", textTotalAddBtnClicked);
+textTotalAddBtnElem.addEventListener("click", textTotalAddBtnClicked);
