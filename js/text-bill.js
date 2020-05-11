@@ -12,7 +12,7 @@ const totalCost = document.querySelector(".totalOne");
 
 
 
-  var billTotal =0;
+  var billsTotal =0;
 
   var callsTotal =0;
 
@@ -34,7 +34,7 @@ function textTotalAddBtnClicked(){
 
     if (billItem === "call"){
 
-      billTotal += 2.75;
+      billsTotal += 2.75;
 
         callsTotal += 2.75;
 
@@ -42,7 +42,7 @@ function textTotalAddBtnClicked(){
 
     else if (billItem === "sms"){
 
-      billTotal += 0.75
+      billsTotal += 0.75
 
         smsTotal += 0.75;
 
@@ -57,7 +57,7 @@ function textTotalAddBtnClicked(){
 
   smsTotalElem.innerHTML = smsTotal.toFixed(2);
 
-  totalCost.innerHTML = billTotal.toFixed(2); 
+  totalCost.innerHTML = billsTotal.toFixed(2); 
 
 
 
@@ -70,7 +70,7 @@ function textTotalAddBtnClicked(){
 function totalAddBtnClicked(){
 
    
-      if (billTotal >= 50){
+      if (billsTotal >= 50){
 
        // adding the danger class will make the text red
 
@@ -78,7 +78,7 @@ function totalAddBtnClicked(){
 
    }
 
-   else if (billTotal >= 30){
+   else if (billsTotal >= 30){
 
        totalCost.classList.add("warning");
 
