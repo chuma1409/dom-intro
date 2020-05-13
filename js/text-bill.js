@@ -52,7 +52,7 @@ function textTotalAddBtnClicked(){
 
 
 
-  totalAddBtnClicked()
+  colorAddBtnClicked()
   callTotalElem.innerHTML = callsTotal.toFixed(2);
 
   smsTotalElem.innerHTML = smsTotal.toFixed(2);
@@ -67,7 +67,7 @@ function textTotalAddBtnClicked(){
 
 
 
-function totalAddBtnClicked(){
+function colorAddBtnClicked(){
 
    
       if (billsTotal >= 50){
