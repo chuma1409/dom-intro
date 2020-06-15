@@ -1,38 +1,19 @@
+function RadioBill() {
   var billTotalCost =0;
-  var callsTotalCost =0;
-  var smsTotalCost =0;
+  var callsTotalCost =2.75;
+  var smsTotalCost =0.75;
 
-function radioTotalAddBtnClicked(){
-  
-var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
-if (checkedRadioBtn){
-   var billItemType = checkedRadioBtn.value
-  
-}
-  var billItem = billItemType.trim();
-    if (billItem === "call"){
-      billTotalCost += 2.75;
-        callsTotalCost += 2.75;
-    }
-    else if (billItem === "sms"){
-      billTotalCost += 0.75
-        smsTotalCost += 0.75;
-    }
-    
 
-  totalAddBtnClicked()
-}
-var radioBill = function(){
     var tCalls = 0;
     var tSms = 0;
     var tAdd = 0;
 function eachCall(){
-    tCalls += 2.75;
-    tAdd += 2.75;
+    tCalls += callsTotalCost;
+    tAdd += billTotalCost;
 }
 function eachSms(){
-    tSms += 0.75;
-    tAdd += 0.75;
+    tSms += smsTotalCost;
+    tAdd += billTotalCost;
 }
 function tCallsTotal(){
     return tCalls;
@@ -40,18 +21,26 @@ function tCallsTotal(){
 function tSmsTotal(){
     return tSms;
 }
+function allTotal(){
+  return tSms + tCalls;
+}
+
 function warningLevel(){
-    return "warning";
+  if(allTotal() >= 30)  
+  return "warning";
 }
 function dangerLevel(){
+  if(allTotal() >= 50)
     return "danger";
 }
+
 return{
     radioTotalAddBtnClicked,
     eachCall,
     eachSms,
     tCallsTotal,
     tSmsTotal,
+    allTotal,
     warningLevel,
     dangerLevel
 }

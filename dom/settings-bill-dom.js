@@ -1,56 +1,52 @@
+const btnAdd = document.querySelector(".add");
+const btnUpd = document.querySelector(".updateSettings")
 
-const btnAdd=document.querySelector(".add");
-const btnUpd=document.querySelector(".updateSettings")
+const smsCost = document.querySelector(".smsCostSetting");
+const callCost = document.querySelector(".callCostSetting");
+const criticalLevel = document.querySelector(".criticalLevelSetting");
+const warningLevel = document.querySelector(".warningLevelSetting");
+const totalCostElemThree = document.querySelector(".totalSettings");
+const callCostElem = document.querySelector(".callTotalSettings");
+const smsCostElem = document.querySelector(".smsTotalSettings");
 
-const smsCost=document.querySelector(".smsCostSetting");
-const callCost=document.querySelector(".callCostSetting");
-const criticalLevel=document.querySelector(".criticalLevelSetting");
-const warningLevel=document.querySelector(".warningLevelSetting");
-const totalCostElemThree=document.querySelector(".totalSettings");
-  const callCostElem=document.querySelector(".callTotalSettings");
-const smsCostElem=document.querySelector(".smsTotalSettings");
+var settingsInstance = BillWithSettings()
 
-function styleTotal(roundedBillTotal){ 
-      const currentTotal=Number(roundedBillTotal);
-    totalCostElemThree.classList.remove("danger");
-    totalCostElemThree.classList.remove("warning");
 
- if(currentTotal>=warnLevel && currentTotal<critLevel)
-    {//make orange
-        totalCostElemThree.classList.remove("danger")
-totalCostElemThree.classList.add("warning");
+function update() {
+  settingsInstance.setCallCost(Number(callCost.value))
+  settingsInstance.setSmsCost(Number(smsCost.value))
+  settingsInstance.setWarningLevel(Number(warningLevel.value))
+  settingsInstance.setCriticalLevel(Number(criticalLevel.value))
+  styleTotal();
+}
+
+
+function clicked() {
+
+  var radioSmsCall = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+  if (radioSmsCall) {
+    var item = radioSmsCall.value;
+    if (item === "call") {
+      settingsInstance.makeCall()
     }
-    
-else if(currentTotal>=critLevel){
-        //make red
-        totalCostElemThree.classList.remove("warning")
-        totalCostElemThree.classList.add("danger")
-    } 
-    
-}
-function clicked(){
+    if (item = "sms") {
+      settingsInstance.makeSms()
+    }
+  }
 
- var radioSmsCall = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+  callCostElem.innerHTML = settingsInstance.getTotalCallCost().toFixed(2);
+  smsCostElem.innerHTML = settingsInstance.getTotalSmsCost().toFixed(2)
+  totalCostElemThree.innerHTML = settingsInstance.getTotalCost().toFixed(2);
+  styleTotal();
 
-  var item = radioSmsCall.value;  
-
-  totalAdd(item);    
-callCostElem.innerHTML =callCostTotal.toFixed(2);
-    smsCostElem.innerHTML = smsCostTotal.toFixed(2)
-    totalCostElemThree.innerHTML = allCostTotal.toFixed(2);
-styleTotal(allCostTotal);
-  
-}
-btnAdd.addEventListener("click",clicked);
-function update(){
-  
- callCostVal=Number(callCost.value);
-  smsCostVal=Number(smsCost.value);
-   warnLevel=Number(warningLevel.value);
- critLevel=Number(criticalLevel.value);
-    styleTotal(allCostTotal); 
 }
 
-    
-btnAdd.addEventListener("click",clicked);
-btnUpd.addEventListener("click",update);
+function styleTotal() {
+
+  totalCostElemThree.classList.remove("danger");
+  totalCostElemThree.classList.remove("warning");
+  totalCostElemThree.classList.add(settingsInstance.colorCode());
+}
+
+btnAdd.addEventListener("click", clicked);
+btnUpd.addEventListener("click", update);

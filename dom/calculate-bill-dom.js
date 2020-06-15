@@ -3,11 +3,10 @@ const billTotalElement = document.querySelector(".billTotal");
 const billStringField = document.querySelector(".billString");
 const billTotalSpanElement = document.querySelector(".total");
 
-var calculateBill = CalculateBill();
 
   function calculateBillFunction(){
     var billString = billStringField.value;
-    var currentTotal = calculateBill.totalPhoneBill (billString);
+    var currentTotal = totalPhoneBill(billString);
    
     
        billTotalSpanElement.classList.remove("danger");
@@ -22,7 +21,7 @@ var calculateBill = CalculateBill();
     billTotalSpanElement.classList.add("warning");
     }
    
-    billTotalElement.innerHTML = currentTotal;
+    billTotalElement.innerHTML = currentTotal.toFixed(2);
   
   }
 
